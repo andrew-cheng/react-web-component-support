@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-function UsingDirectly() {
+function UsingDirectly({onVote}) {
   const list = [
     { first: 'John', last: 'Doe' },
     { first: 'Jane', last: 'Doe' },
@@ -11,9 +11,7 @@ function UsingDirectly() {
 
   useEffect(() => {
     listRef.current.list = list;
-    listRef.current.addEventListener('vote', (payload) => {
-      console.log('voted', payload.detail);
-    });
+    listRef.current.addEventListener('vote', onVote);
   });
 
   return (

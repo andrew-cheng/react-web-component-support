@@ -1,9 +1,9 @@
-import React, { Fragment, useRef, useEffect } from 'react';
+import React from 'react';
 
 function WebComponentWrapper({children, attributes, properties, onEvent, onLoad}) {
-    const componentRef = useRef();
+    const componentRef = React.useRef();
   
-    useEffect(() => {
+    React.useEffect(() => {
       if (properties) {
         Object.keys(properties).forEach(prop => {
           componentRef.current[prop] = properties[prop];
@@ -15,15 +15,16 @@ function WebComponentWrapper({children, attributes, properties, onEvent, onLoad}
         });
       }
 
+      //TODO: parent needs to be able to call this at will, preferably no refs needed
       if (onLoad) {
         onLoad(componentRef.current);
       }
     });
     
     return (
-      <Fragment>
+      <>
         {React.cloneElement(children, {...attributes, ref: componentRef})}
-      </Fragment>
+      </>
     );
 }
 

@@ -2,16 +2,12 @@ import React from 'react';
 
 import WebComponentWrapper from './web-component-wrapper';
 
-function UsingWrapper() {
+function UsingWrapper({onVote}) {
   const list = [
     { first: 'John', last: 'Doe' },
     { first: 'Jane', last: 'Doe' },
     { first: 'Johnny', last: 'Doe' }
   ];
-
-  const onVote = (payload) => {
-    console.log('voted', payload.detail);
-  };
 
   return (
     <WebComponentWrapper
