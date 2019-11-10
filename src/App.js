@@ -21,12 +21,12 @@ function App() {
   }
 
   return (
-    <>
+    <React.StrictMode>
       <UsingDirectly onVote={onVote} />
       <UsingWrapper onVote={onVote} />
       <WrappedIonAlert show={showAlert} name={votedName} onDismiss={onDismiss} />
       <WrappedWebComponentMethodCall />
-    </>
+    </React.StrictMode>
   );
 }
 
