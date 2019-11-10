@@ -10,6 +10,7 @@
 | Property | Attribute | Description | Type                                 | Default     |
 | -------- | --------- | ----------- | ------------------------------------ | ----------- |
 | `list`   | --        |             | `{ first: string; last: string; }[]` | `undefined` |
+| `title`  | `title`   |             | `string`                             | `undefined` |
 
 
 ## Events

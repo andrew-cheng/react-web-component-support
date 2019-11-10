@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { Fragment, useEffect, useRef } from 'react';
+
+import WebComponentWrapper from './web-component-wrapper';
 
 function App() {
   const list = [
     { first: 'John', last: 'Doe' },
-    { first: 'Jane', last: 'Doe'},
-    { first: 'Johnny', last: 'Doe'}
+    { first: 'Jane', last: 'Doe' },
+    { first: 'Johnny', last: 'Doe' }
   ];
 
   const listRef = useRef();
@@ -16,8 +18,21 @@ function App() {
     });
   });
 
+  const onVote = (payload) => {
+    console.log('voted', payload.detail);
+  };
+
   return (
-    <simple-list ref={listRef}></simple-list>
+    <Fragment>
+      <simple-list ref={listRef} title="Using it directly"></simple-list>
+      <WebComponentWrapper
+        attributes={{title: 'Using a wrapper'}}
+        properties={{list}}
+        onEvent={{vote: onVote}}
+      >
+        <simple-list></simple-list>
+      </WebComponentWrapper>
+    </Fragment>
   );
 }
 

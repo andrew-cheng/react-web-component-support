@@ -12,6 +12,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 export namespace Components {
   interface SimpleList {
     'list': { first: string, last: string }[];
+    'title': string;
   }
 }
 
@@ -32,6 +33,7 @@ declare namespace LocalJSX {
   interface SimpleList {
     'list'?: { first: string, last: string }[];
     'onVote'?: (event: CustomEvent<any>) => void;
+    'title'?: string;
   }
 
   interface IntrinsicElements {
