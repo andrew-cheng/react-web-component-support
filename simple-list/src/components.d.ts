@@ -14,6 +14,9 @@ export namespace Components {
     'list': { first: string, last: string }[];
     'title': string;
   }
+  interface SimpleLogger {
+    'logSomething': (something: string) => Promise<void>;
+  }
 }
 
 declare global {
@@ -24,8 +27,15 @@ declare global {
     prototype: HTMLSimpleListElement;
     new (): HTMLSimpleListElement;
   };
+
+  interface HTMLSimpleLoggerElement extends Components.SimpleLogger, HTMLStencilElement {}
+  var HTMLSimpleLoggerElement: {
+    prototype: HTMLSimpleLoggerElement;
+    new (): HTMLSimpleLoggerElement;
+  };
   interface HTMLElementTagNameMap {
     'simple-list': HTMLSimpleListElement;
+    'simple-logger': HTMLSimpleLoggerElement;
   }
 }
 
@@ -35,9 +45,11 @@ declare namespace LocalJSX {
     'onVote'?: (event: CustomEvent<any>) => void;
     'title'?: string;
   }
+  interface SimpleLogger {}
 
   interface IntrinsicElements {
     'simple-list': SimpleList;
+    'simple-logger': SimpleLogger;
   }
 }
 
@@ -48,6 +60,7 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'simple-list': LocalJSX.SimpleList & JSXBase.HTMLAttributes<HTMLSimpleListElement>;
+      'simple-logger': LocalJSX.SimpleLogger & JSXBase.HTMLAttributes<HTMLSimpleLoggerElement>;
     }
   }
 }

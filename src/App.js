@@ -4,6 +4,7 @@ import UsingDirectly from './using-directly';
 import UsingWrapper from './using-wrapper';
 
 import WrappedIonAlert from './wrapped-ion-alert';
+import WrappedWebComponentMethodCall from './call-methods/wrapped-web-component-method-call';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
       <UsingDirectly onVote={onVote} />
       <UsingWrapper onVote={onVote} />
       <WrappedIonAlert show={showAlert} name={votedName} onDismiss={onDismiss} />
+      <WrappedWebComponentMethodCall />
     </>
   );
 }
